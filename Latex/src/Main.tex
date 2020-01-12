@@ -1,0 +1,178 @@
+%\documentclass[a4paper,12pt,headsepline]{scrartcl}
+%\DeclareOldFontCommand{\bf}{\normalfont\bfseries}{\mathbf}
+\documentclass[a4paper,12pt]{article}
+\usepackage[utf8]{inputenc}
+
+% Variables
+\input{settings/variables}
+
+% Embed PNG graphics
+\usepackage{graphicx}
+% English syllabification
+\usepackage[english]{babel}
+% West European encoding
+\usepackage[T1]{fontenc}
+% Smoother font
+\usepackage{lmodern}
+% Enable floating picture environments
+%\usepackage{floatflt}
+% Enable multi-page tables
+\usepackage{longtable}
+% Pretty state of the art tables
+\usepackage{tabularx,booktabs}
+\newcolumntype{C}{>{\centering\arraybackslash}X} % centered version of "X" type
+% Set page margins
+\usepackage{geometry}
+\geometry{left=3.5cm, right=2cm, top=2.5cm, bottom=2cm}
+% Boxes in text
+\usepackage{fancybox}
+% Appropriately 'syllabify' URLs
+\usepackage[hyphens,obeyspaces,spaces]{url}
+% Enable colored text
+\usepackage{color}
+% Import math symbols -- mathtools works better for this document
+%\usepackage{amssymb}
+% Allow writing above/below arrows + math symbols
+\usepackage{mathtools}
+% Heading on each page (centered)
+%\pagestyle{headings}
+
+% Enable hyperlinked Table of Contents in the PDF
+\usepackage[bookmarksnumbered,pdftitle={\titleDocument},hyperfootnotes=false]{hyperref}
+% Hyperlink settings
+%\hypersetup{colorlinks, citecolor=red, linkcolor=blue, urlcolor=black}
+%\hypersetup{colorlinks, citecolor=black, linkcolor= black, urlcolor=black}
+% Cleaner headings
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{} % Clean all headings/footings.
+%\fancyhead[L]{\nouppercase{\leftmark}} % Left-bound heading
+\fancyhead[C]{} % Centered heading
+%\fancyhead[R]{\thepage} % Right-bound heading
+\renewcommand{\headrulewidth}{0.4pt} %obere Trennlinie
+\setlength{\headheight}{15pt}
+\fancyfoot[C]{\thepage} % Include page number
+%\renewcommand{\footrulewidth}{0.4pt} % Separate line at bottom of the page, does not look good imo
+% Citation form: Name (Year)
+\usepackage{natbib}
+% Set spacing between lines - if requested
+\usepackage{setspace}
+% Enable captioning non-float environments
+\usepackage{capt-of}
+% Enable indexing - \see, \seealso, \index...
+\usepackage{makeidx}
+% Create index if makeidx is enabled
+\makeindex
+% Enable listings for code/pseudocode
+%\usepackage{listings}
+%\lstset{numbers=left, numberstyle=\tiny, numbersep=5pt, keywordstyle=\color{black}\bfseries, stringstyle=\ttfamily,showstringspaces=false,basicstyle=\footnotesize,captionpos=b}
+%\lstset{language=python}
+
+% List of Abbreviations -- does not work so far
+\usepackage[english]{nomencl}
+\let\abbrev\nomenclature
+% Create index of abbreviations
+\makenomenclature
+% Abkürzungsverzeichnis LiveTex Version
+% Title
+\renewcommand{\nomname}{List of Abbreviations}
+% Space between abbreviation and explanation
+\setlength{\nomlabelwidth}{.25\textwidth}
+% Fill space with dots
+\renewcommand{\nomlabel}[1]{#1 \dotfill}
+% Space between abbreviations
+\setlength{\nomitemsep}{-\parsep}
+\makeglossary
+
+% Enable linguistic glossing and more. Always load last!!!
+\usepackage{gb4e}
+\noautomath % gb4e redefines underscores - this suppresses the redefinition
+
+% Suppress orphans
+%\clubpenalty = 10000
+% Suppress widows
+%\widowpenalty = 10000
+%\displaywidowpenalty = 10000
+
+\begin{document}
+% Begin with empty page for print version
+\thispagestyle{empty}
+\mbox{}
+\newpage
+
+% TITLE PAGE %
+\input{settings/title_page}
+
+% 1.5x spacing for summary and abstract
+\onehalfspacing
+\newpage
+% ABSTRACT %
+\input{abstract}
+
+% 1x spacing for ToC
+\singlespacing
+
+% TABLE OF CONTENTS %
+\newpage
+\tableofcontents
+% INDEX OF FIGURES - IN ToC %
+\addcontentsline{toc}{section}{Index of Figures}
+\listoffigures
+% INDEX OF TABLES - IN ToC %
+\addcontentsline{toc}{section}{Index of Tables}
+\listoftables
+% INDEX OF LISTINGS - IN ToC %
+%\addcontentsline{toc}{section}{Index of Listings}
+%\fancyhead[L]{Index of Figures/Tables/Listings} %\renewcommand{\lstlistlistingname}{Index of Listings}
+%\lstlistoflistings
+% LIST OF ABBREVIATIONS - IN ToC %
+\addcontentsline{toc}{section}{List of Abbreviations}
+\fancyhead[L]{List of Abbreviations}
+\input{settings/abbreviations/abbreviations}
+\printnomenclature[3cm]
+
+
+%%%%%%% MAIN BODY %%%%%%%%%%%%
+\newpage
+\fancyhead[L]{\nouppercase{\leftmark}}
+% 1,5 facher Zeilenabstand
+\onehalfspacing
+
+% einzelne Abschnitte
+\input{1_Introduction}
+\input{2_RelatedWork}
+\input{3_ExperimentSetup}
+\input{4_Results}
+\input{5_Discussion}
+\input{6_Conclusion}
+
+% 1x spacing for Bibliography
+\singlespacing
+
+\newpage
+% Bibliography appears in ToC
+\addcontentsline{toc}{section}{Bibliography}
+\renewcommand\refname{Bibliography}
+\bibliography{master}
+\bibliographystyle{myapalike}
+
+
+\onehalfspacing
+% APPENDIX %
+\newpage
+% Appendix appears in ToC
+\addcontentsline{toc}{section}{Appendix}
+\fancyhead[L]{Appendix} %Kopfzeile links
+\input{appendix/appendix}
+
+% EIDESSTATTLICHE ERKLÄRUNG %
+\newpage
+\addcontentsline{toc}{section}{Eidesstattliche Erklärung}
+\input{declaration}
+
+% Empty final page for printing
+\newpage
+\thispagestyle{empty}
+\mbox{}
+
+\end{document}
