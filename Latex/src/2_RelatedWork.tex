@@ -2,12 +2,12 @@
 
 
 \subsection{Formal Languages and Formal Grammars}\label{formalLanguages}
-A formal language $L$ is defined as a subset of $\Sigma^{*}$ over an alphabet $\Sigma$, with $\Sigma^{*}$ being the set of all words over the alphabet. For the purpose of formal language theory, the subset of $\Sigma^{*}$ that constitutes the language $L(G)$ needs to be well-formed given the formal grammar $G$.
+A formal language $L$ is defined as a subset of $\Sigma^{*}$ over an alphabet $\Sigma$, with $\Sigma^{*}$ being the set of all words over the alphabet. For the purpose of formal language theory, the subset of $\Sigma^{*}$ that constitutes the language $L(G)$ needs to be well-formed<Definition of well formed necessary?> given the formal grammar $G$.
 As per \cite{JurafskyMartin2009}, the definition of a formal grammar is $G = \lbrace N, \Sigma, R, S \rbrace$, where $N$ is a set of non-terminal symbols, $\Sigma$ is a set of terminal symbols (alphabet), $R$ is a set of rules of the form $\alpha \rightarrow \beta$ (where $\alpha$ and $\beta$ are strings of symbols from $(\Sigma \cup N)^{*}$) and $S$ is a designated start symbol.
 
 $L(G)$ consists of all strings $w$ that can be derived from the start symbol $S$ in a finite number of steps, formally $\lbrace w \in \Sigma^{*} | S \xRightarrow [\text{G}]{\text{*}} w \rbrace$. As such, a word $w \in \Sigma^{*}$ that cannot be derived from $S$ in a finite number of steps is not part of $L(G)$.
 
-Formal grammars differ in terms of complexity and can be described in a hierarchical manner. Grammars of higher complexity have a greater generative power than grammars of lower complexity. The most commonly used hierarchy of grammars is the Chomsky hierarchy (\cite{Chomsky1959}). In this hierarchy, formal grammars are classified into three types, sorted from most powerful to least powerful: Turing equivalent (Type 0), Context Sensitive (Type 1), Context Free (Type 2) and Regular (Type 3).
+Formal grammars differ in terms of complexity and can be described in a hierarchical manner. Grammars of higher complexity have a greater generative power than grammars of lower complexity. The most commonly used hierarchy of grammars is the Chomsky hierarchy (\cite{Chomsky1959}). In this hierarchy, formal grammars are classified into four types, sorted from most powerful to least powerful: Turing equivalent (Type 0), Context Sensitive (Type 1), Context Free (Type 2) and Regular (Type 3).
 
 The difference in generative power and complexity stems from increasing restrictions imposed on the rules of the grammar - a Type 3 grammar is more restrictive than a Type 0 grammar. As such, every grammar of a higher type is a subset of the previous type of grammar. A visual representation of this property can be found in Figure \ref{fig:ChomskyHierarchy}.
 
@@ -37,7 +37,7 @@ The four types of formal grammars can be defined by the form their rules can tak
 
 \subsection{Formal Grammars and Natural Language}
 The correspondence of formal grammars to automata and Computational Complexity Theory lends itself to consider natural languages under the same lense. While formal grammars constitute powerful tools with which phenomena in natural language can be described, assessing precisely where natural languages lie within the Chomsky hierarchy is the subject of ongoing research.
-The usual form arguments answering that question take is one of finding lower bounds: If there is a phenomenon in a natural language that cannot be described with a given grammar, natural language must be - however slighty - more complex than that type allows. Such arguments increase in credibility the more frequently they can be replicated for phenomena in multiple languages. The arguments establishing natural languages as supra-context-free (i.e. more complex than CFGs) as well as contrary evidence from empiric research shall be presented here.
+The usual form arguments answering that question take is one of finding lower bounds<sentence not undestandable, at least to me :P>: If there is a phenomenon in a natural language that cannot be described with a given grammar, natural language must be - however slighty - more complex than that type allows. Such arguments increase in credibility the more frequently they can be replicated for phenomena in multiple languages. The arguments establishing natural languages as supra-context-free (i.e. more complex than CFGs) as well as contrary evidence from empiric research shall be presented here.
 
 \subsubsection{Natural Language as supra-regular}\label{supraReg}
 English, as well as several other languages (\cite{Hagege1976}) allow for center embedding, the embedding of a phrase into another phrase of the same type.
@@ -57,15 +57,16 @@ Then the following two sets can be defined.
 E' &= \lbrace \text{the man } a^{n}b^{n} \text{ eats} \: \vert \: n \geq 0 \rbrace \\
 R &= \lbrace \text{the man } a^{*}b^{*} \text{ eats} \rbrace
 \end{align*}
-$a^{n}$ and $b^{n}$ are finite sequences of size $n$ of elements of sets $A$ and $B$, respectively. $E'$ describes a subset of $E$, namely $E \cap R$. Since regular languages are closed under intersection and $E'$ is not regular, $E$ is not regular.\footnote{The proofs for regular languages being closed under intersection and $E'$ not being regular can be found in the appendix.}
+<unless $a^*$ and $b^*$ as well as R are convetion they should be defined>
+$a^{n}$ and $b^{n}$ are finite sequences of size $n$ of elements of sets $A$ and $B$, respectively. $E'$ describes a subset of $E$, namely $E \cap R$. Since regular languages are closed under inter/section and $E'$ is not regular, $E$ is not regular.\footnote{The proofs for regular languages being closed under intersection and $E'$ not being regular can be found in the appendix.}
 
-While this proof is correct under the framework of Formal Language Theory, the validity of claiming that it shows natural language to be supra-regular is debatable. Research in psycholinguistics shows that native speakers have face severe problems processing center embeddings of depth two or higher, yielding long processing times, an incomplete understanding of the presented sentence or leading the participants to judge the sentence as ungrammatical (\cite{Hamilton1971}, \cite{Frank2016}). Furthermore, the corpus-driven analysis by \cite{Karlsson2007} suggests an upper limit of center embedding depth three in the seven investigated languages.
+While this proof is correct under the framework of Formal Language Theory, the validity of claiming that it shows natural language to be supra-regular is debatable. Research in psycholinguistics shows that native speakers have faced severe problems processing center embeddings of depth two or higher, yielding long processing times, an incomplete understanding of the presented sentence or <oxford comma?> leading the participants to judge the sentence as ungrammatical (\cite{Hamilton1971}, \cite{Frank2016}). Furthermore, the corpus-driven analysis by \cite{Karlsson2007} suggests an upper limit of center embedding depth three in the seven investigated languages.
 
-The proof concerns linguistic competence, whereas empirical studies provide an insight into linguistic performance. Usually, the distinction between competence and performance provide an adequate framework for both theoretical and empirical work, but when discussing the complexity of natural language neither side should be discarded. A linguistic competence framework cannot appropriately declare natural language as supra-regular if natural language is produced and processed according to regular rules. Conversely, for the purposes of computational linguistics, exclusively assessing linguistic performance by way of corpus analysis is insufficient, as a corpus of any size pales in comparison to the potential for infinitely many combinations that characterizes language. For the purposes of NLP, it is recommendable to err on the side of overestimating the complexity of natural language - so long as the resulting models are sufficiently efficient and accurate.
+The proof concerns linguistic competence, whereas empirical studies provide an insight into linguistic performance. Usually, the distinction between competence and performance provide an adequate framework for both theoretical and empirical work, but when discussing the complexity of natural language neither side should be discarded. A linguistic competence framework cannot appropriately declare natural language as supra-regular if natural language is produced and processed according to regular rules. Conversely, for the purposes of computational linguistics, exclusively assessing linguistic performance by way of corpus analysis is insufficient, as a corpus of any size pales in comparison to the potential for infinitely many combinations that characterizes language.<Beautiful sentence but hard to read, you should split it up or reorder it> For the purposes of NLP, it is recommendable to err<is err CL lingo?if it's just an err, please correct ;)> on the side of overestimating the complexity of natural language - so long as the resulting models are sufficiently efficient and accurate.
 
-\subsubsection{Natural Language as supra-context-free}
+\subsubsection{Natural Language as supra-context-free<is there a word missing?>}
 
-Similarly to the proof given in Section \ref{supraReg}, an argument characterizing natural language as supra-context-free can be brought forth. It is based on embedded infinitival verb phrases found in Swiss German (\cite{Shieber1987}).
+Similarly to the proof given in Section \ref{supraReg}, an argument characterizing natural language as supra-context-free can be brought forth. It is based on embedded infinitival verb phrases found in Swiss German (\cite{Shieber1987})<Even if the selection of swiss german is evident for the paper, the, I would suggest to quickly mention why it was chosen>.
 \begin{exe}
 	\ex
 	\gll Jan säit das mer em Hans es huus haend wele hälfe aastriiche. \\
@@ -76,6 +77,7 @@ Similarly to the proof given in Section \ref{supraReg}, an argument characterizi
 	Jan said that we the children-ACC the Hans-DAT the house-ACC have wanted let help paint \\
 	\trans 'Jan said that we have wanted to let the children help Hans paint the house.'
 \end{exe}
+<as mentioned in the last example>
 Four finite sets can be constructed from these examples: accusative noun phrases ($A = \lbrace \text{d'chind}, \, \dots \rbrace$), dative noun phrases ($B = \lbrace \text{em Hans}, \, \dots \rbrace$), transitive verbs taking accusative objects ($C = \lbrace \text{laa}, \, \dots \rbrace$) and transitive verbs taking dative objects ($D = \lbrace \text{hälfe}, \, \dots \rbrace$). Let the set $S$ then be the set of all grammatical sentences of Swiss German. Again, the two following sets can be defined:
 \begin{align*}
 S' &= \lbrace \text{Jan säit das mer } a^{n}b^{m} \text{ es huus haend wele } c^{n}d^{m} \text{ aastriiche} \: \vert \: n, m \geq 0 \rbrace \\
@@ -86,7 +88,7 @@ $S'$ is not context-free and results from $S \cap R$. Since context-free sets ar
 Curiously enough, empirical research into the matter of processing similar cross-serial dependencies in Dutch suggests them to be generally easier to process than nested dependencies (i.e. the ones used to prove natural language to be supra-regular) (\cite{Bach1986}).
 
 \subsection{Dyck Languages}\label{dyckLanguages}
-Whether natural language is regular, context-free, supra-regular or supra-context-free is a distinction of only tangential relevance for this work. The first two cases are fully covered by CFGs, while the other two leave room for some natural language productions outside of the scope of CFGs. The characteristics of supra-context-free examples in natural language show a \textit{weak} non-context-freeness, making CFGs sufficient for covering the vast majority of natural language productions. With this assumption, an appropriate CFG for a model to learn must be found. The most important property of this grammar is that model performance on its language must allow for strong conclusions about the learnability of any other CFG. In doing so, one can make reasoned assumptions about potential model performance on natural language data. 
+Whether natural language is regular, context-free, supra-regular or supra-context-free is a distinction of only tangential relevance for this work<or not?>. The first two cases are fully covered by CFGs, while the other two leave room for some natural language productions outside of the scope of CFGs. The characteristics of supra-context-free examples in natural language show a \textit{weak} non-context-freeness, making CFGs sufficient for covering the vast majority of natural language productions. With this assumption<which part of the preceding paragraph is the assumption you mean?>, an appropriate CFG for a model to learn must be found. The most important property of this grammar is that model performance<the models performance?> on its language must allow for strong conclusions about the learnability of any other CFG. In doing so, one can make reasoned assumptions about potential model performance on natural language data. 
 
 One such a grammar is the Dyck Grammar, which can produce an array of Dyck Languages. Let $D_{n} = \lbrace N, \Sigma, R, S \rbrace$ with
 \begin{align*}
@@ -99,15 +101,15 @@ One such a grammar is the Dyck Grammar, which can produce an array of Dyck Langu
 where $O_{n}$ represents an opening parenthesis, $C_{n}$ represents a closing parenthesis and $n$ denotes the number of distinct pairs of parentheses. $D_1$, then, denotes the Dyck Language with $\Sigma = \lbrace \epsilon, (, ) \rbrace$, $D_2$ the Dyck Language with $\Sigma = \lbrace \epsilon, (, [, ], ) \rbrace$, et cetera.
 
 Within the family of Dyck Languages, $D_2$ is of particular interest. According to the Chomsky-Schützenberger Representation Theorem \citep{Chomsky1963}, for every context-free language $L$ there exists a positive integer $n$, a regular language $R$, and a homomorphism $h$ so that $L = h(D_{n} \cap R)$. Following the proof in \cite{Autebert1997}, a homomorphism $g_{n}$ can be constructed so that $D_{n} = g_{n}^{-1}(D_{2})$. It follows that every context-free language can be represented as $L = h(g_{n}^{-1}(D_{2}) \cap R)$. As such, every CFL could be represented via homomorphisms on $D_2$ and intersections with a regular language\footnote{NDFL vs DFL!}. Assuming natural languages to be context-free and bearing in mind that using a formal language is a choice of abstraction which allows for precise control over corpus composition, this makes $D_2$ the language of choice when evaluating neural network performance on a comparative scale.
-%TODO proof, basically
+%TODO proof, basically <jup, you should do that :), especially for the the statement in the last sentence>
 %TODO NDFL vs DFL footnote
 
 \subsection{Neural Network Architectures}\label{neuralNetworkArchitectures}
 
 \subsubsection{Simple RNN}\label{SRNN}
-Recurrent Neural Networks (RNNs) (\cite{Elman1990}) are a neural network architecture particularly suited to processing sequential information by virtue of them being recurrent: the RNN's output at a time step $t$ is fed back as its input at the following time step $t+1$. As such, every output is dependent on the previous computation as well as the current input. This property equips RNNs with a "memory" with regards to previous inputs, allowing them to capture context dependencies a context agnostic model cannot adequately learn.
+Recurrent Neural Networks (RNNs) (\cite{Elman1990}) are a neural network architecture particularly suited to processing sequential information by virtue of them being recurrent<The first rule of the tautology club is the first rule of the tautology club! I will go in my corner now>: the RNN's output at a time step $t$ is fed back as its input at the following time step $t+1$. As such, every output is dependent on the previous computation as well as the current input. This property equips RNNs with a "memory" with regards to previous inputs, allowing them to capture context dependencies a context agnostic model cannot adequately learn.<maybe my CL wizardry is not fancy enough, but the last part of the sentence does not really makes sence to me>
 
-Within the frame of this work, the specific case of the Simple RNN (SRNN) is considered. It is a three layer networks, consisting of an input layer, a hidden layer and an output layer. The hidden state $h_t$ at time step $t$ given the input vector $x_t$ and the output vector $y_t$ are calculated as per the following equations:
+Within the frame of this work, the specific case of the Simple RNN (SRNN) is considered.<The last sentence does not really mean anything> It is a three layer network, consisting of an input layer, a hidden layer and an output layer. The hidden state $h_t$ at time step $t$ given the input vector $x_t$ and the output vector $y_t$ are calculated as per the following equations:
 
 \begin{align}
 	h_{t} &= f(\boldsymbol{W_{xh}} x_{t} + \boldsymbol{W_{hh}} h_{t-1}) \\
@@ -116,7 +118,7 @@ Within the frame of this work, the specific case of the Simple RNN (SRNN) is con
 
 The function $f$ constitutes a non-linear transformation, like $\tanh$ or ReLU. $\boldsymbol{W_{xh}}$, $\boldsymbol{W_{hh}}$, $\boldsymbol{W_{yh}}$ are matrices of the weights connecting the input layer to the hidden layer, the hidden layer to itself and the hidden layer to the output layer, respectively.
 
-When training RNNs, it is beneficial to think of the network as unfolding into an architecture with one layer per time step. A visualisation is provided in Figure \ref{fig:unrolledRNN}. As such, the RNN can be treated as a deep feedforward network. These conceptual layers share their parameters - if any weight changes at time step $t$, the weight also changes at $t+1, t+2, \dots, t+n$. Isolated changes are not possible. A popular training algorithm for RNNs is Backpropagation Through Time (BPTT) (\cite{Williams1998}), a gradient based algorithm designed for recurrent rather than feedforward networks. However, as \cite{Bengio1994} and \cite{Hochreiter1998} show, RNNs suffer from a fundamental flaw: the aptly named vanishing gradient problem, in which the training gradient diminishes to zero throughout the layers.
+When training RNNs, it is beneficial to think of the network as unfolding into an architecture with one layer per time step. A visualisation is provided in Figure \ref{fig:unrolledRNN}. As such, the RNN can be treated as a deep feedforward<isn't it feed forward?> network. These conceptual layers share their parameters - if any weight changes at time step $t$, the weight also changes at $t+1, t+2, \dots, t+n$. Isolated changes are not possible. A popular training algorithm for RNNs is Backpropagation Through Time (BPTT) (\cite{Williams1998}), a gradient based algorithm designed for recurrent rather than feedforward<isn't it feed forward?> networks. However, as \cite{Bengio1994} and \cite{Hochreiter1998} show, RNNs suffer from a fundamental flaw: the aptly named vanishing gradient problem, in which the training gradient diminishes to zero throughout the layers.
 
 \begin{figure}[htb]
  \centering
@@ -140,7 +142,7 @@ LSTMs are based on self-connected linear units which are regulated by three mult
 \varphi_{t} &= m_{\varphi} (\boldsymbol{W_{\varphi}} \cdot [h_{t-1},x_{t}] + b_{\varphi})
 \end{align*}
 
-Finally, the cell state $C_{t-1}$ is updated to $C_{t}$ and $h_{t}$ is set.
+Finally, the cell state $C_{t-1}$ is updated to $C_{t}$ and $h_{t}$ is set.<Finally requires some kind of listing which does not exist, at least at the moment>
 
 \begin{align*}
 C_{t} &= \text{forget}_{t} \odot C_{t-1} + \text{in}_{t} \odot \tanh (\boldsymbol{W_{C}} \cdot [h_{t-1},x_{t}] + b_{\text{C}}) \\
