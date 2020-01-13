@@ -1,5 +1,3 @@
-%\documentclass[a4paper,12pt,headsepline]{scrartcl}
-%\DeclareOldFontCommand{\bf}{\normalfont\bfseries}{\mathbf}
 \documentclass[a4paper,12pt]{article}
 \usepackage[utf8]{inputenc}
 
@@ -123,7 +121,8 @@
 \listoftables
 % INDEX OF LISTINGS - IN ToC %
 %\addcontentsline{toc}{section}{Index of Listings}
-%\fancyhead[L]{Index of Figures/Tables/Listings} %\renewcommand{\lstlistlistingname}{Index of Listings}
+%\fancyhead[L]{Index of Figures/Tables/Listings}
+%\renewcommand{\lstlistlistingname}{Index of Listings}
 %\lstlistoflistings
 % LIST OF ABBREVIATIONS - IN ToC %
 \addcontentsline{toc}{section}{List of Abbreviations}
@@ -135,7 +134,7 @@
 %%%%%%% MAIN BODY %%%%%%%%%%%%
 \newpage
 \fancyhead[L]{\nouppercase{\leftmark}}
-% 1,5 facher Zeilenabstand
+% 1,5x spacing for main work
 \onehalfspacing
 
 % einzelne Abschnitte
@@ -162,7 +161,7 @@
 \newpage
 % Appendix appears in ToC
 \addcontentsline{toc}{section}{Appendix}
-\fancyhead[L]{Appendix} %Kopfzeile links
+\fancyhead[L]{Appendix}
 \input{appendix/appendix}
 
 % EIDESSTATTLICHE ERKLÄRUNG %

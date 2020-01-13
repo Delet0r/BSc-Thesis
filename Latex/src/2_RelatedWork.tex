@@ -13,7 +13,7 @@ The difference in generative power and complexity stems from increasing restrict
 
 \begin{figure}[htb]
  \centering
- \includegraphics[width=0.5\linewidth]{abb/chomskyhierarchy}
+ \includegraphics[width=0.5\linewidth]{fig/chomskyhierarchy}
  \caption[Chomsky Hierarchy]{A visual representation of the Chomsky Hierarchy.}
 \label{fig:ChomskyHierarchy}
 \end{figure}
@@ -31,7 +31,7 @@ The four types of formal grammars can be defined by the form their rules can tak
 	3 & Regular & $A \rightarrow xB$ or $A \rightarrow x$ & Finite-State Automata (accepted) \\
 	\bottomrule	
 	\end{tabularx}
-	\caption[Overview of formal grammar properties.]{Overview of formal grammar properties according to \cite{JurafskyMartin2009}, augmented with corresponding automata.}
+	\caption[Formal grammar properties.]{Overview of formal grammar properties according to \cite{JurafskyMartin2009}, augmented with corresponding automata.}
 	\label{tab:GrammarRules}
 \end{table}
 
@@ -41,12 +41,12 @@ The usual form arguments answering that question take is one of finding lower bo
 
 \subsubsection{Natural Language as supra-regular}\label{supraReg}
 English, as well as several other languages (\cite{Hagege1976}) allow for center embedding, the embedding of a phrase into another phrase of the same type.
-%\begin{exe}
-%	\ex The man eats.
-%	\ex The man the boss fired eats.
-%	\ex The man the boss the investor distrusted fired eats.
-%	\ex The man the boss the investor the police investigated distrusted fired eats.
-%\end{exe}
+\begin{exe}
+	\ex The man eats.
+	\ex The man the boss fired eats.
+	\ex The man the boss the investor distrusted fired eats.
+	\ex The man the boss the investor the police investigated distrusted fired eats.
+\end{exe}
 Let the set $E$ contain all grammatical sentences of English, and let the noun phrases and transitive verbs constitute following sets:
 \begin{align*}
 A &= \lbrace \text{the boss}, \, \text{the investors}, \, \text{the police}, \dots \rbrace \\
@@ -66,17 +66,16 @@ The proof concerns linguistic competence, whereas empirical studies provide an i
 \subsubsection{Natural Language as supra-context-free}
 
 Similarly to the proof given in Section \ref{supraReg}, an argument characterizing natural language as supra-context-free can be brought forth. It is based on embedded infinitival verb phrases found in Swiss German (\cite{Shieber1987}).
-%\begin{exe}
-%	\ex
-%	\gll Jan säit das mer em Hans es huus haend wele hälfe aastriiche. \\
-%	Jan said that we the Hans-DAT the house-ACC have wanted help paint \\
-%	\trans 'Jan said that we have wanted to help Hans paint the house.'
-%	\ex
-%	\gll Jan säit das mer d'chind em Hans es huus haend wele laa hälfe aastriiche. \\
-%	Jan said that we the children-ACC the Hans-DAT the house-ACC have wanted let help paint \\
-%	\trans 'Jan said that we have wanted to let the children help Hans paint the house.'
-%\end{exe}
-
+\begin{exe}
+	\ex
+	\gll Jan säit das mer em Hans es huus haend wele hälfe aastriiche. \\
+	Jan said that we the Hans-DAT the house-ACC have wanted help paint \\
+	\trans 'Jan said that we have wanted to help Hans paint the house.'
+	\ex
+	\gll Jan säit das mer d'chind em Hans es huus haend wele laa hälfe aastriiche. \\
+	Jan said that we the children-ACC the Hans-DAT the house-ACC have wanted let help paint \\
+	\trans 'Jan said that we have wanted to let the children help Hans paint the house.'
+\end{exe}
 Four finite sets can be constructed from these examples: accusative noun phrases ($A = \lbrace \text{d'chind}, \, \dots \rbrace$), dative noun phrases ($B = \lbrace \text{em Hans}, \, \dots \rbrace$), transitive verbs taking accusative objects ($C = \lbrace \text{laa}, \, \dots \rbrace$) and transitive verbs taking dative objects ($D = \lbrace \text{hälfe}, \, \dots \rbrace$). Let the set $S$ then be the set of all grammatical sentences of Swiss German. Again, the two following sets can be defined:
 \begin{align*}
 S' &= \lbrace \text{Jan säit das mer } a^{n}b^{m} \text{ es huus haend wele } c^{n}d^{m} \text{ aastriiche} \: \vert \: n, m \geq 0 \rbrace \\
@@ -121,7 +120,7 @@ When training RNNs, it is beneficial to think of the network as unfolding into a
 
 \begin{figure}[htb]
  \centering
- \includegraphics[width=0.6\textwidth]{abb/logo1}
+ \includegraphics[width=0.6\textwidth]{fig/logo1}
  \caption[Unfolded RNN]{An RNN, unfolded through time.}
 \label{fig:unrolledRNN}
 \end{figure}
@@ -150,7 +149,7 @@ h_{t} &= \text{out}_{t} \odot \tanh (C_{t})
 
 \begin{figure}[htb]
  \centering
- \includegraphics[width=0.6\textwidth]{abb/logo1}
+ \includegraphics[width=0.6\textwidth]{fig/logo1}
  \caption[LSTM Memory Cell]{An LSTM memory cell, bla, bla bla.}
 \label{fig:memoryCellLSTM}
 \end{figure}
@@ -170,7 +169,7 @@ h_{j}^{t} &= z_{j}h_{j}^{t-1} + (1 - z_{j}) \tilde{h}_{j}^{t} \\
 
 \begin{figure}[htb]
  \centering
- \includegraphics[width=0.6\textwidth]{abb/logo1}
+ \includegraphics[width=0.6\textwidth]{fig/logo1}
  \caption[Illustration of a GRU]{Illustration of a GRU.}
 \label{fig:GRU}
 \end{figure}
@@ -179,6 +178,7 @@ h_{j}^{t} &= z_{j}h_{j}^{t-1} + (1 - z_{j}) \tilde{h}_{j}^{t} \\
 %TODO (maybe!) brief overview of sources utilizing GRUs for NLP and formal language eval
 
 \subsection{Related Works}\label{relatedWorks}
+%TODO This section desperately needs a rewrite. Give it an actual narrative, rather than just being a laundry list of previous papers.
 
 Formal languages have been used to evaluate the performance of neural network architectures for decades (\cite{Cleeremans1989}, \cite{Zeng1994}, \cite{Hochreiter1997}, \cite{Rodriguez1998}, \cite{GersSchmidhuber2001}, \cite{JoulinMikolov2015}). These papers frequently determine how well the architecture can generalize from training on a relatively small subset of the language to testing on longer unseen words. (Example results)
 %TODO Specific example results, i.e. "LSTMs can learn CSLs"
@@ -222,7 +222,7 @@ An overview of investigated Dyck languages, corpus sizes and reported measures o
 		\cite{Yu2019} & 2 & modified & $1,000,000$ \\ 
 		\bottomrule
 	\end{tabularx}
-	\caption[Overview of corpus sizes in current works]{Overview of corpus sizes in current works.}
+	\caption[Corpus sizes in current works]{Overview of corpus sizes in current works.}
 	\label{tab:LiteratureCorpusOverview}
 \end{table}
 
@@ -256,7 +256,7 @@ An overview of investigated Dyck languages, corpus sizes and reported measures o
 	\cite{Yu2019} & No & Yes & No & No & Yes \\ 
 	\bottomrule
 	\end{tabularx} 
-	\caption[Overview of reported values for performance]{Overview of reported values for performance. Cell State Analysis does not refer to a unified method, it merely means the paper investigates cell states at all. AUC refers to the area under the curve for an increasing length of Dyck words the model was able to generalize.}
+	\caption[Reported values for performance in previous works]{Overview of reported values for performance. Cell State Analysis does not refer to a unified method, it merely means the paper investigates cell states at all. AUC refers to the area under the curve for an increasing length of Dyck words the model was able to generalize.}
 	\label{tab:LiteratureReportedMeasures}
 \end{table} 
 
