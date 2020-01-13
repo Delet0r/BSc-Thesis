@@ -16,10 +16,10 @@ import pickle
 # python predictive_RNN.py [train/test] [model] [layer_size] [test_slice]
 
 # Constants for all models.
-INPUT_FILE = 'cumlen20_nomod.txt' # 512*170
-CORPUS = 'LEQ_20_NOMOD'
-TEST_INPUT = './eval_data/ND_leq_20.txt' # 512*17
-EXPERIMENT = 'ND'
+INPUT_FILE = 'cumlen20_long.txt' # 512*170
+CORPUS = 'LEQ_20_LONG'
+TEST_INPUT = './eval_data/LRD_leq_20.txt' # 512*17
+EXPERIMENT = 'LRD'
 SEQ_LENGTH = 1
 EPOCHS = 50
 BATCH = 512
@@ -126,7 +126,8 @@ def evaluate(word, model, vocabulary):
 	closing_brackets = 0
 	accuracy_by_index = []
 	predictions_by_index = []
-	for i in range(len(word)-1):
+	for i in range(len(word)-1): # Not accounting for EOW marker - irrelevant for scoring accuracy.
+		# Transform char_to_int input into training-shaped input.
 		X = np.reshape(word[i], (1, SEQ_LENGTH, 1))
 		Y_pred = model.predict(X/float(vocabulary))
 		predictions_by_index.append(Y_pred)
@@ -222,7 +223,7 @@ elif MODE == 'test':
 		raw_words = line.split('$')
 		for raw_word in raw_words:
 			raw_word = raw_word + '$'
-			words.append([char_to_int[char]/float(VOCABULARY) for char in raw_word])
+			words.append([char_to_int[char] for char in raw_word])
 	words = words[:-1]
 	evaluated_words = len(words)
 	print("Words in test corpus: {}".format(evaluated_words))
