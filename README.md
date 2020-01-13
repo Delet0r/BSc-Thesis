@@ -1,1 +1,1 @@
-# BA-Thesis
+# BSc-Thesis
