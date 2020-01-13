@@ -56,11 +56,11 @@ for i in range(len(words_test2)):
 
 print("Len LRD: {}".format(len(words_LRD)))
 print("Len ND: {}".format(len(words_ND)))
-print("Saving eq ....")
-outfile = open('./eval_data/train_eq_' + str(MAX_LENGTH) + '.txt','w')
-for word in words_test2:
-	outfile.write(word)
-outfile.close()
+# print("Saving eq ....")
+# outfile = open('./eval_data/train_eq_' + str(MAX_LENGTH) + '.txt','w')
+# for word in words_test2:
+	# outfile.write(word)
+# outfile.close()
 
 print("Saving LRD ....")
 words_LRD = list(words_LRD)

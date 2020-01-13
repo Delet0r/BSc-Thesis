@@ -16,10 +16,10 @@ import pickle
 # python predictive_RNN.py [train/test] [model] [layer_size] [test_slice]
 
 # Constants for all models.
-INPUT_FILE = 'cumlen20_short.txt' # 512*170
-CORPUS = 'LEQ_20_SHORT'
-TEST_INPUT = './eval_data/LRD_leq_20.txt' # 512*17
-EXPERIMENT = 'LRD'
+INPUT_FILE = 'cumlen20_nomod.txt' # 512*170
+CORPUS = 'LEQ_20_NOMOD'
+TEST_INPUT = './eval_data/ND_leq_20.txt' # 512*17
+EXPERIMENT = 'ND'
 SEQ_LENGTH = 1
 EPOCHS = 50
 BATCH = 512
